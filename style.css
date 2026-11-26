@@ -1471,3 +1471,13 @@ html body :is(#cg-creator, #cg-modal) :is(.cg-cr-win, .cg-mwin) {
 @media (max-width: 760px) {
     html body :is(#cg-creator, #cg-modal) :is(.cg-cr-win, .cg-mwin) { height: 100% !important; max-height: none !important; width: 100% !important; }
 }
+
+/* ── 좁은 화면에서 수첩·등록부가 납작해지거나 비쳐 보이던 문제 ──
+   SillyTavern은 <html>에 translateZ(0)을 걸어 두는데, 그러면 화면에 고정된 창(수첩·등록부·행동 창)의
+   기준이 화면이 아니라 <html> 상자가 된다. 좁은 화면(1000px 이하)에서는 <body>가 고정 위치로 바뀌어
+   <html>의 높이가 0이 되므로, 위·아래를 0으로 붙인 창이 높이 0으로 접혀 머리만 남고 뒤가 비쳐 보였다.
+   <html>이 늘 화면 높이를 갖게 하고, 수첩 높이도 직접 정해 둔다 */
+html { min-height: 100%; height: 100%; }
+@media (max-width: 1000px) {
+    html body #cg-panel { height: calc(100dvh - var(--topBarBlockSize, 40px)) !important; bottom: auto !important; }
+}
