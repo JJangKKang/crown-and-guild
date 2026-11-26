@@ -1455,3 +1455,19 @@ html body #cg-letterpop textarea.cg-lp-ta::placeholder { color: rgba(90, 66, 38,
 #cg-panel .cg-cheat-sp-list .cg-mini small { opacity: .6; margin-right: 3px; }
 
 #cg-panel .cg-cheat-lbl { font-size: 12px; opacity: .75; align-self: center; margin-right: 2px; }
+
+/* ── 다른 테마·모바일에서도 등록부·행동 창이 화면을 꽉 채운 불투명 창으로 뜨도록 고정 ──
+   테마가 div나 고정 위치 요소를 건드려도 덮이거나 줄어들지 않게 !important로 못 박는다 */
+html body #cg-creator.cg-open, html body #cg-modal.cg-open {
+    position: fixed !important; top: 0 !important; left: 0 !important; right: 0 !important; bottom: 0 !important;
+    width: 100vw !important; height: 100vh !important; height: 100dvh !important; max-height: none !important;
+    display: flex !important; margin: 0 !important; transform: none !important; opacity: 1 !important; visibility: visible !important;
+}
+html body #cg-creator.cg-open { z-index: 30000 !important; }
+html body #cg-modal.cg-open { z-index: 29990 !important; }
+html body :is(#cg-creator, #cg-modal) :is(.cg-cr-win, .cg-mwin) {
+    background-color: #15120f !important; opacity: 1 !important; min-height: 0 !important;
+}
+@media (max-width: 760px) {
+    html body :is(#cg-creator, #cg-modal) :is(.cg-cr-win, .cg-mwin) { height: 100% !important; max-height: none !important; width: 100% !important; }
+}
