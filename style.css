@@ -68,7 +68,7 @@
 /* 금박 이중선 프레임 (창 공용) */
 .cg-frame, .cg-cr-win, .cg-mwin, .cg-check, .cg-start-card {
     position: relative;
-    background: linear-gradient(180deg, rgba(33, 29, 24, .96), rgba(18, 16, 14, .96));
+    background: linear-gradient(180deg, #211d18, #12100e);
     border: 1px solid var(--g-line2);
     box-shadow: var(--g-frame, inset 0 0 0 3px rgba(18, 16, 14, .9), inset 0 0 0 4px var(--g-line), 0 12px 40px rgba(0, 0, 0, .45));
 }
@@ -484,7 +484,10 @@
 /* ── 모바일 ── */
 @media (max-width: 760px) {
     #cg-creator, #cg-modal { padding: 0; }
-    .cg-cr-win, .cg-mwin { height: 100%; border-radius: 0; }
+    #cg-creator, #cg-modal { height: 100vh; height: 100dvh; }
+    #cg-creator { z-index: 10050; } #cg-modal { z-index: 10040; }
+    .cg-cr-win, .cg-mwin { height: 100%; max-height: none; border-radius: 0; min-height: 0; }
+    .cg-cr-body, .cg-mbody { min-height: 0; }
     .cg-cr-head, .cg-mhead { padding: 14px 16px 10px; }
     .cg-cr-steps, .cg-mtabs { margin: 0 16px; }
     .cg-cr-steps li span { display: none; }
